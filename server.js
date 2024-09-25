@@ -36,10 +36,12 @@ app.get('/', (req, res) => {
 
 app.get('/new', (req, res) => {
     res.render('new')
-} )
+})
+
+
 
 app.post('/create', (req, res) => {
-    res.send('Your blog has been successfully created!')
+    res.send('Your Car has been successfully created!')
 })
 
 app.listen(3000, () => {

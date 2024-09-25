@@ -7,7 +7,12 @@ const app = express()
 
 app.set('view engine', 'ejs')
 
-app.get('/new', )
+app.get('/', (req, res) => {
+    res.send("HOME")
+})
+app.get('/new', (req, res) => {
+    res.render('new')
+} )
 
 
 app.listen(3000, () => {
@@ -16,3 +21,4 @@ app.listen(3000, () => {
 
 
 
+ 

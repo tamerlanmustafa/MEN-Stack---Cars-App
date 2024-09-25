@@ -4,6 +4,8 @@ const dotenv = require('dotenv').config()
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 
+const carsController = require('./controllers/cars')
+
 
 PORT = process.env.PORT || 3000;
 
@@ -40,15 +42,10 @@ app.get('/new', (req, res) => {
 
 
 
-app.post('/create', (req, res) => {
-    res.send('Your Car has been successfully created!')
-})
+app.post('/create', carsController.createCar)
 
 app.listen(3000, () => {
     console.log(`Server is running on port: ${PORT}`)
 }) 
 
 
-
-
- 

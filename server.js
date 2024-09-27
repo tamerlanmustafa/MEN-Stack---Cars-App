@@ -5,7 +5,7 @@ const methodOverride = require("method-override");
 const morgan = require("morgan");
 
 const carsController = require('./controllers/cars')
-
+const Car = require("./models/car")
 
 PORT = process.env.PORT || 3000;
 
@@ -14,11 +14,12 @@ const app = express()
 
 
 app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: false }));
 
 
 
 
-
+  
 mongoose.connect(process.env.MONGODB_URI)
 
 mongoose.connection.on('connected', () => {
@@ -32,14 +33,13 @@ mongoose.connection.on("error", (err) => {
 
 
 
-app.get('/', (req, res) => {
-    res.send("HOME")
-})
+app.get('/', carsController.getAllCars)
 
-app.get('/new', (req, res) => {
-    res.render('new')
-})
+app.get('/cars/new', (req, res) => {
+    res.render('cars/new')
+})  
 
+app.get('/cars/show/:id', carsController.getOneCar)
 
 
 app.post('/create', carsController.createCar)

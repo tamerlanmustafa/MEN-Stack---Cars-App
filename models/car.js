@@ -1,18 +1,19 @@
 const mongoose = require('mongoose')
 
 const imageSchema = new mongoose.Schema({
-    imageUrl: { type: String, require },    
+    imageUrl: { type: String },    
 })
+
 
 const carsSchema = new mongoose.Schema({
     make: String,
     model: String,
     miles: Number, 
-    year: Date,
+    year: Number,
     cleanTitle: Boolean,
     images: [imageSchema]
 })
 
-const Cars = mongoose.model("Cars", carsSchema)
+const Car = mongoose.model("Car", carsSchema)
 
-module.exports = Cars
+module.exports = Car
